@@ -1,3 +1,3 @@
 # MaxEnt
-Machine Learning Programming Assignment_
+Machine Learning Programming Assignment__
 Implementation of Logistic Regression/MaxEnt classifier
