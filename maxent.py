@@ -38,10 +38,7 @@ class MaxEnt(Classifier):
             batch = train_instances[start:batch_size]
             # extract features and classes
             for instance in batch:
-                feats = []
-                if len(instance.features()) > 10:
-                    feats = instance.features()[:10]
-                else: feats = instance.features()
+                feats = instance.features()
                 for f in feats:
                     if f not in self.feature_vector: self.feature_vector.append(f)
                 if instance.label not in self.classes: self.classes.append(instance.label)
@@ -54,10 +51,7 @@ class MaxEnt(Classifier):
             # get empirical counts for feature-class
             emp = np.zeros(shape=(len(self.feature_vector), len(self.classes)))
             for instance in batch:
-                feats = []
-                if len(instance.features()) > 10:
-                    feats = instance.features()[:10]
-                else: feats = instance.features()
+                feats = instance.features()
                 for f in feats:
                     if f in self.feature_vector:
                         emp[self.feature_vector.index(f)][self.classes.index(instance.label)] += 1
@@ -65,10 +59,7 @@ class MaxEnt(Classifier):
             # compute posteriors and store in a matrix, too
             posterior = np.zeros(shape=(len(self.feature_vector), len(self.classes)))
             for instance in batch:
-                feats = []
-                if len(instance.features()) > 10:
-                    feats = instance.features()[:10]
-                else: feats = instance.features()
+                feats = instance.features()
                 for f in feats:
                     denom = 0
                     for k in range(0,len(self.classes)):
@@ -107,10 +98,7 @@ class MaxEnt(Classifier):
                 res = 0
                 c = 0
                 feats = instance.features()
-                feats = []
-                if len(instance.features()) > 10:
-                    feats = instance.features()[:10]
-                else: feats = instance.features()
+                feats = instance.features()
                 # compute sigmoid for each class
                 for k in range(0,len(self.classes)):
                     z = 0
